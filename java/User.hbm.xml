@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.models.User" table="user">
+		<id name="id" column="id">
+			<generator class="increment" />
+		</id>
+		<property name="firstName" column="firstname" />
+		<property name="lastName" column="lastName" />
+		<property name="email" column="email" />
+		<property name="password" column="password" />
+		<property name="role" column="role" />
+		<many-to-one name="companyId" class="com.models.Company"
+			fetch="join">
+			<column name="companyId"  />
+		</many-to-one>
+		<property name="activeFlag" column="activeFlag" />
+		<property name="modifiedBy" type="java.lang.Integer">
+			<column name="modifiedBy" />
+		</property>
+		<property name="modifiedAt" type="java.util.Date">
+			<column name="modifiedAt"  />
+		</property>
+	</class>
+</hibernate-mapping>
+
+

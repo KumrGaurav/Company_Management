@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="com.action" extends="struts-default">
+		<!--Action related to User -->
+
+		<action name="loginPage" class="com.action.UserAction">
+			<result name="success">/login.jsp</result>
+		</action>
+		<action name="logout" class="com.action.UserAction">
+			<result name="success">/login.jsp</result> <!-- Redirect to login page or home page after logout -->
+		</action>
+
+		<action name="authentication" class="com.action.UserAction"
+			method="authentication">
+			<result name="success">/dashboard.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="showUsers" class="com.action.UserAction"
+			method="getAll">
+			<result name="success">/showUsers.jsp</result>
+		</action>
+
+		<action name="addUser" class="com.action.UserAction"
+			method="execute">
+			<result name="success">/saveUser.jsp</result>
+		</action>
+		<action name="saveUser" class="com.action.UserAction"
+			method="save">
+			<result name="success">/index.jsp</result>
+		</action>
+		<!--Action related to Projects -->
+
+		<action name="saveProject" class="com.action.projectAction"
+			method="save">
+			<result name="success">/projectGrid.jsp</result>
+		</action>
+
+		<action name="showProjectGrid" class="com.action.projectAction"
+			method="getAll">
+			<result name="success">/projectGrid.jsp</result>
+		</action>
+
+		<action name="updateProject" class="com.action.projectAction"
+			method="updateProject">
+			<result name="success">/index.jsp</result>
+		</action>
+
+		<action name="deleteProject" class="com.action.projectAction"
+			method="deleteProject">
+			<result name="success">/index.jsp</result>
+		</action>
+
+		<action name="adminDashboard" class="com.action.CompanyAction">
+			<result name="success">/admin.jsp</result>
+		</action>
+		<action name="companyUserDashboard" class="com.action.CompanyAction">
+			<result name="success">/companyUserDashboard.jsp</result>
+		</action>
+
+		<!--Action related to Companies -->
+		<action name="listCompanies" class="com.action.CompanyAction">
+			<result name="success">/companiesList.jsp</result>
+		</action>
+
+		<action name="saveCompany" class="com.action.CompanyAction"
+			method="save">
+			<result name="success">/companiesList.jsp</result>
+		</action>
+
+		<action name="deleteCompany" class="com.action.CompanyAction"
+			method="delete">
+			<result name="success">/companiesList.jsp</result>
+		</action>
+
+		<action name="updateCompany" class="com.action.CompanyAction"
+			method="update">
+			<result name="success">/companiesList.jsp</result>
+		</action>
+
+		<!--Actions related to Task -->
+		<action name="tasks" class="com.action.TasksAction">
+			<result>/tasks.jsp</result>
+		</action>
+
+		<action name="save" class="com.action.TasksAction"
+			method="save">
+			<result name="success">/tasks.jsp</result>
+		</action>
+
+		<action name="deleteTask" class="com.action.TasksAction"
+			method="deleteTask">
+			<result name="success">/tasks.jsp</result>
+		</action>
+
+		<action name="updateTask" class="com.action.TasksAction"
+			method="updateTask">
+			<result name="success">/tasks.jsp</result>
+		</action>
+
+		<action name="taskHistory" class="com.action.TaskHistoryAction">
+			<result>/taskHistory.jsp</result>
+		</action>
+
+		<!--Actions related to Employees -->
+		<action name="employees" class="com.action.EmployeesAction">
+			<result>/employees.jsp</result>
+		</action>
+
+		<action name="fetchProjectList"
+			class="com.action.projectAction" method="fetchProjectList">
+			<result name="success">/employees.jsp</result>
+		</action>
+
+		<action name="employee" class="com.action.EmployeesAction">
+			<result>/employees.jsp</result>
+		</action>
+		<action name="delete" class="com.action.EmployeesAction"
+			method="deleteEmployee">
+			<result name="success">/employees.jsp</result>
+		</action>
+
+		<action name="update" class="com.action.EmployeesAction"
+			method="updateEmployee">
+			<result name="success">/employees.jsp</result>
+		</action>
+
+		<!--Actions related to Task Attachment -->
+		<action name="listAttachment"
+			class="com.action.AttachmentAction" method="listAttachment">
+			<result name="success">/attachment.jsp</result>
+		</action>
+		<action name="saveAttachment"
+			class="com.action.AttachmentAction" method="save">
+			<interceptor-ref name="fileUploadStack" />
+			<result name="success">/attachment.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="deleteAttachment"
+			class="com.action.AttachmentAction" method="delete">
+			<result name="success">/attachment.jsp</result>
+		</action>
+		<!--Comments Action -->
+		<action name="saveComment" class="com.action.CommentAction"
+			method="save">
+			<result name="success">/addComment.jsp</result>
+		</action>
+
+		<action name="loadComments" class="com.action.CommentAction"
+			method="getAll">
+			<result name="success">/demo.jsp</result>
+		</action>
+		<action name="addComment" class="com.action.CommentAction">
+			<result name="success">/addComment.jsp</result>
+		</action>
+
+		<!--Actions of companyUser -->
+		<!-- <action name="companyUser" class="com.action.CompanyUserAction"> <result>/companyUser.jsp</result> 
+			</action> -->
+
+		<action name="companiesUserProject"
+			class="com.action.CompanyUserAction">
+			<result>/companiesProjects.jsp</result>
+		</action>
+
+		<action name="companyUserProjects"
+			class="com.action.CompanyUserAction" method="listProjects">
+			<result name="success">/projectGrid.jsp</result>
+		</action>
+
+		<action name="companyUserEmployees"
+			class="com.action.CompanyUserAction" method="listEmployees">
+			<result name="success">/employee.jsp</result>
+		</action>
+		<action name="saveEmployee"
+			class="com.action.CompanyUserAction" method="addEmployee">
+			<result name="success">/employee.jsp</result>
+		</action>
+		<action name="deleteEmployee"
+			class="com.action.CompanyUserAction" method="deleteEmployee">
+			<result name="success">/employee.jsp</result>
+		</action>
+
+		<!-- <action name="addCompanyProject" class="com.action.CompanyProjectAction" 
+			method="addCompanyProject"> <result name="success">/index.jsp</result> </action> -->
+
+		<action name="updateEmployee"
+			class="com.action.CompanyUserAction" method="updateEmployee">
+			<result name="success">/employee.jsp</result>
+		</action>
+
+		<action name="listAllEmployees"
+			class="com.action.CompanyUserAction" method="listAllEmployees">
+			<result name="success">/employee.jsp</result>
+		</action>
+
+		<action name="projectTask" class="com.action.TasksAction"
+			method="projectTask">
+			<result name="success">/companyProjects.jsp</result>
+		</action>
+
+		<action name="addProjectTask" class="com.action.TasksAction"
+			method="addProjectTask">
+			<result name="success">/companyProjects.jsp</result>
+		</action>
+
+		<action name="editTask" class="com.action.TasksAction"
+			method="updateTask">
+			<result name="success">/employees.jsp</result>
+		</action>
+
+		<action name="loadProjectTask" class="com.action.TasksAction"
+			method="getAllProjectTask">
+			<result name="success">/showProjectTask.jsp</result>
+		</action>
+
+		<action name="retrieveEmployeeList"
+			class="com.action.EmployeeProjectAction" method="getEmployeeList">
+			<!-- Result mapping missing -->
+		</action>
+
+		<action name="deleteTask" class="com.action.TasksAction"
+			method="deleteTask">
+			<result name="success">/tasks.jsp</result>
+		</action>
+
+		<action name="employeeProject"
+			class="com.action.EmployeesAction" method="listProjects">
+			<result name="success">/employeeProject.jsp</result>
+		</action>
+
+		<action name="projectTasks"
+			class="com.action.EmployeesAction" method="listProjectTask">
+			<result name="success">/employees.jsp</result>
+		</action>
+			<action name="importFile"
+			class="com.action.EmployeesAction" method="importFile">
+			<result name="companyUserEmployees" type="redirectAction">
+            <param name="actionName">companyUserEmployees</param>
+        </result>
+		</action>
+
+	</package>
+</struts>

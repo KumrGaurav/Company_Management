@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.models.Project" table="project">
+		<id name="projectID" column="projectID">
+            <generator class="increment" />
+        </id>
+        <property name="projectName" type="java.lang.String">
+            <column name="projectName" />
+        </property>
+        <many-to-one name="id" class="com.models.User" fetch="join">
+            <column name="AssignedTo" />
+        </many-to-one>
+        <property name="status" column="status"/>
+        <many-to-one name="companyId" class="com.models.Company"
+			fetch="join">
+			<column name="companyId"  />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

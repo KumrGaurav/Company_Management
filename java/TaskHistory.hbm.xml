@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.models">
+
+    <class name="TaskHistory" table="taskHistory">
+	    <id name="taskHistoryID" column="taskHistoryID">
+	        <generator class="increment"/>
+	    </id>
+	    <many-to-one name="taskId" column="taskID" class="com.models.Tasks" />
+	    <!-- <property name="taskName" column="taskName" type="string"/>
+	    <property name="taskStatus" column="taskStatus" type="string"/> -->
+	    <many-to-one name="performedByID" column="performedById" class="com.models.User" />
+	
+	    <property name="performedAct" column="performedAct" type="string"/>
+	    <property name="createTime" column="createTime" type="timestamp"/>
+	    <property name="activeFlag" column="activeFlag" type="integer"/>
+	</class>
+
+</hibernate-mapping>

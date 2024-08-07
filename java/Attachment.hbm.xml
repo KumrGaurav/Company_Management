@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.models.Attachment" table="task_attachment">
+        
+        <id name="attachmentId" type="java.lang.Integer">
+            <column name="attachmentId" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="taskId" class="com.models.Tasks" fetch="join">
+            <column name="taskId" not-null="true"/>
+        </many-to-one>
+       
+        <property name="attachmentName" type="java.lang.String">
+            <column name="attachmentName" />
+        </property>
+        
+        <many-to-one name="id" class="com.models.User" fetch="join">
+            <column name="attachmentBy"/>
+        </many-to-one>
+        
+        <property name="attachmentPath" type="java.lang.String">
+            <column name="attachmentPath"/>
+        </property>
+        <property name="attachmentDateTime" type="java.util.Date">
+            <column name="attachmentDateTime"/>
+        </property>
+        <property name="activeFlag" type="java.lang.Integer">
+            <column name="activeFlag"/>
+        </property>
+    </class>
+</hibernate-mapping>

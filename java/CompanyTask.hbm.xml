@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.company">
+
+    <class name="com.models.CompanyTask" table="company_tasks">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="taskName" column="task_name"/>
+        <property name="projectName" column="project_name"/>
+        <property name="employeeName" column="employee_name"/>
+        <property name="companyName" column="company_name"/>
+        <property name="taskStatus" column="task_status"/>
+        <property name="createTime" column="create_time"/>
+        <property name="status" column="status"/>
+		<many-to-one name="companyUser" column="company_user_id" class="com.models.CompanyUser"  />
+        <many-to-one name="companyProject" column="company_project_id" class="com.models.CompanyProject"  />
+    </class>
+
+</hibernate-mapping>

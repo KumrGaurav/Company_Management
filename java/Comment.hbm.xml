@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.models.Comment" table="comment">
+        <id name="commentID" type="int">
+            <column name="comment_id" precision="10" scale="0" />
+           	<generator class="increment" />
+        </id>
+        <property name="comment" type="string">
+            <column name="comment" length="255" />
+        </property>
+        <property name="createTime" type="timestamp">
+            <column name="create_time"  />
+        </property>
+        <property name="status" type="int">
+            <column name="status" precision="10" scale="0" not-null="true" />
+        </property>
+        <many-to-one name="task" class="com.models.Tasks" fetch="join">
+            <column name="task_id"  />
+        </many-to-one>
+        <many-to-one name="user" class="com.models.User" fetch="join">
+            <column name="user_id"  />
+        </many-to-one>
+        
+    </class>
+
+</hibernate-mapping>

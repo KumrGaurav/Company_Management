@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/companywork</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+		<property name="hibernate.enable_lazy_load_no_trans">true</property>
+		<property name="show_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+		<property name="hibernate.generate_statistics">true</property>
+		<mapping resource="User.hbm.xml" />
+		<mapping resource="Project.hbm.xml" />
+		<mapping resource="Company.hbm.xml" />
+		<mapping resource="Tasks.hbm.xml" />
+		<mapping resource="TaskHistory.hbm.xml" />
+		<mapping resource="Comment.hbm.xml" />
+		<mapping resource="Attachment.hbm.xml" />
+		<mapping resource="CompanyUser.hbm.xml" />
+		<mapping resource="CompanyProject.hbm.xml" />
+		<mapping resource="CompanyTask.hbm.xml" />
+		<mapping resource="EmployeeProject.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

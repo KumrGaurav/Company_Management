@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.models.Tasks" table="tasks">
+        <id name="taskID" type="java.lang.Integer">
+            <column name="taskID" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="projectID"
+            class="com.models.Project"
+            fetch="join">
+            <column name="projectID" />
+        </many-to-one>
+        <!-- <property name="projectID" type="java.lang.Integer">
+            <column name="projectID" />
+        </property> -->
+        <property name="taskName" type="java.lang.String">
+            <column name="taskName" />
+        </property>
+        
+        <many-to-one name="id"
+            class="com.models.User"
+            fetch="join">
+            <column name="assignedTo" />
+        </many-to-one>
+        
+        <many-to-one name="createdByUser"
+            class="com.models.User"
+            fetch="join">
+            <column name="createdBy" />
+        </many-to-one>
+        <many-to-one name="modifiedByUser"
+            class="com.models.User"
+            fetch="join">
+            <column name="modifiedBy" />
+        </many-to-one>
+        
+        <!-- <property name="assignedTo" type="java.lang.Integer">
+            <column name="assignedTo"/>
+        </property> -->
+        <property name="taskStatus" type="java.lang.String">
+            <column name="taskStatus"/>
+        </property>
+        <property name="createTime" type="java.util.Date">
+            <column name="createTime"/>
+        </property>
+        <property name="activeFlag" type="java.lang.Integer">
+            <column name="activeFlag"/>
+        </property>
+         <property name="taskDetails" type="java.lang.String">
+            <column name="taskDetails"/>
+        </property>
+    </class>
+</hibernate-mapping>
+
